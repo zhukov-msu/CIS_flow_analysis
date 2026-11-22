@@ -56,17 +56,15 @@ curl -L -o data/CICIDS2017_improved.zip https://intrusion-detection.distrinet-re
 jupyter lab
 ```
 
-Эксперимент tsfresh использует отдельное окружение. Команды запуска и ограничения
-приведены в [analysis/tsfresh/README.md](analysis/tsfresh/README.md),
-выводы — в [analysis/tsfresh/FINDINGS.md](analysis/tsfresh/FINDINGS.md).
+Эксперимент tsfresh использует отдельное окружение.
 
 Для пересчёта признаков откройте [ноутбук извлечения](notebooks/extract_tsfresh_features.ipynb)
-в окружении `.venv-tsfresh`. Если это окружение ещё не доступно как ядро Jupyter:
+в окружении `.venv-tsfresh`. 
 
 ```bash
-.venv-tsfresh/bin/python -m pip install ipykernel
-.venv-tsfresh/bin/python -m ipykernel install --user --name phd-tsfresh --display-name "Python (phd-tsfresh)"
+python3.11 -m venv .venv-tsfresh
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install -r requirements-tsfresh.txt
 ```
 
 После расчёта [EDA](notebooks/EDA_tsfresh.ipynb) загружает `analysis/tsfresh/results/comprehensive_features.csv.gz`.
-Для EDA подходит обычное окружение проекта с Plotly.
