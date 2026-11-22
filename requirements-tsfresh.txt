@@ -1,0 +1,7 @@
+# Standalone experiment environment (Python 3.11); does not replace requirements.txt.
+tsfresh==0.21.1
+numpy==1.26.4
+pandas==2.2.2
+scipy==1.15.3
+scikit-learn==1.6.1
+matplotlib==3.9.4
