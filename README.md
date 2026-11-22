@@ -7,7 +7,11 @@
 | Путь | Что это |
 |---|---|
 | `notebooks/EDA.ipynb` | Разведочный анализ данных |
+| `notebooks/extract_tsfresh_features.ipynb` | Извлечение tsfresh из секундных рядов и сохранение матрицы признаков |
+| `notebooks/EDA_tsfresh.ipynb` | Статистика всех признаков tsfresh, KDE и боксплоты, сравнение по дням и разметке |
 | `notebooks/baseline_models.ipynb` | Сравнение моделей |
+| `notebooks/tsfresh_analysis.ipynb` | Признаки секундных рядов и диагностика аномальных минут |
+
 | `notebooks/cic_common.py` | Общий код блокнотов: загрузка данных, русские названия признаков, оформление графиков |
 | `data/` | Здесь должен лежать dataset |
 | `requirements.txt` | Зависимости с закрепленными версиями |
@@ -51,3 +55,18 @@ curl -L -o data/CICIDS2017_improved.zip https://intrusion-detection.distrinet-re
 ```bash
 jupyter lab
 ```
+
+Эксперимент tsfresh использует отдельное окружение. Команды запуска и ограничения
+приведены в [analysis/tsfresh/README.md](analysis/tsfresh/README.md),
+выводы — в [analysis/tsfresh/FINDINGS.md](analysis/tsfresh/FINDINGS.md).
+
+Для пересчёта признаков откройте [ноутбук извлечения](notebooks/extract_tsfresh_features.ipynb)
+в окружении `.venv-tsfresh`. Если это окружение ещё не доступно как ядро Jupyter:
+
+```bash
+.venv-tsfresh/bin/python -m pip install ipykernel
+.venv-tsfresh/bin/python -m ipykernel install --user --name phd-tsfresh --display-name "Python (phd-tsfresh)"
+```
+
+После расчёта [EDA](notebooks/EDA_tsfresh.ipynb) загружает `analysis/tsfresh/results/comprehensive_features.csv.gz`.
+Для EDA подходит обычное окружение проекта с Plotly.
